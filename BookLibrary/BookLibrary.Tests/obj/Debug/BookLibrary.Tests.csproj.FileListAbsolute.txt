@@ -1,0 +1,11 @@
+C:\Users\Ilia\documents\visual studio 2015\Projects\BookLibrary\BookLibrary.Tests\obj\Debug\BookLibrary.Tests.csprojResolveAssemblyReference.cache
+C:\Users\Ilia\documents\visual studio 2015\Projects\BookLibrary\BookLibrary.Tests\bin\Debug\BookLibrary.Tests.dll
+C:\Users\Ilia\documents\visual studio 2015\Projects\BookLibrary\BookLibrary.Tests\bin\Debug\BookLibrary.Tests.pdb
+C:\Users\Ilia\documents\visual studio 2015\Projects\BookLibrary\BookLibrary.Tests\bin\Debug\BookLibrary.dll
+C:\Users\Ilia\documents\visual studio 2015\Projects\BookLibrary\BookLibrary.Tests\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
+C:\Users\Ilia\documents\visual studio 2015\Projects\BookLibrary\BookLibrary.Tests\bin\Debug\nunit.framework.dll
+C:\Users\Ilia\documents\visual studio 2015\Projects\BookLibrary\BookLibrary.Tests\bin\Debug\BookLibrary.pdb
+C:\Users\Ilia\documents\visual studio 2015\Projects\BookLibrary\BookLibrary.Tests\bin\Debug\nunit.framework.xml
+C:\Users\Ilia\documents\visual studio 2015\Projects\BookLibrary\BookLibrary.Tests\obj\Debug\BookLibrary.Tests.dll
+C:\Users\Ilia\documents\visual studio 2015\Projects\BookLibrary\BookLibrary.Tests\obj\Debug\BookLibrary.Tests.pdb
+C:\Users\Ilia\documents\visual studio 2015\Projects\BookLibrary\BookLibrary.Tests\bin\Debug\BookLibrary.xml

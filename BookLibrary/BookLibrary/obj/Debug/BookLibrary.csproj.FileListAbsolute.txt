@@ -1,0 +1,6 @@
+C:\Users\Ilia\documents\visual studio 2015\Projects\BookLibrary\BookLibrary\bin\Debug\BookLibrary.dll
+C:\Users\Ilia\documents\visual studio 2015\Projects\BookLibrary\BookLibrary\bin\Debug\BookLibrary.pdb
+C:\Users\Ilia\documents\visual studio 2015\Projects\BookLibrary\BookLibrary\obj\Debug\BookLibrary.csprojResolveAssemblyReference.cache
+C:\Users\Ilia\documents\visual studio 2015\Projects\BookLibrary\BookLibrary\obj\Debug\BookLibrary.dll
+C:\Users\Ilia\documents\visual studio 2015\Projects\BookLibrary\BookLibrary\obj\Debug\BookLibrary.pdb
+C:\Users\Ilia\documents\visual studio 2015\Projects\BookLibrary\BookLibrary\bin\Debug\BookLibrary.XML
