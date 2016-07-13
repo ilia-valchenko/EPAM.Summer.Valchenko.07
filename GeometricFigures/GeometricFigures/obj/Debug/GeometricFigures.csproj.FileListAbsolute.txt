@@ -1,0 +1,5 @@
+c:\users\ilia\documents\visual studio 2015\Projects\GeometricFigures\GeometricFigures\obj\Debug\GeometricFigures.csprojResolveAssemblyReference.cache
+c:\users\ilia\documents\visual studio 2015\Projects\GeometricFigures\GeometricFigures\bin\Debug\GeometricFigures.dll
+c:\users\ilia\documents\visual studio 2015\Projects\GeometricFigures\GeometricFigures\bin\Debug\GeometricFigures.pdb
+c:\users\ilia\documents\visual studio 2015\Projects\GeometricFigures\GeometricFigures\obj\Debug\GeometricFigures.dll
+c:\users\ilia\documents\visual studio 2015\Projects\GeometricFigures\GeometricFigures\obj\Debug\GeometricFigures.pdb
