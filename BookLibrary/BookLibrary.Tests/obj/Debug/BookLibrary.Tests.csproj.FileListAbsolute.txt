@@ -9,3 +9,14 @@ C:\Users\Ilia\documents\visual studio 2015\Projects\BookLibrary\BookLibrary.Test
 C:\Users\Ilia\documents\visual studio 2015\Projects\BookLibrary\BookLibrary.Tests\obj\Debug\BookLibrary.Tests.dll
 C:\Users\Ilia\documents\visual studio 2015\Projects\BookLibrary\BookLibrary.Tests\obj\Debug\BookLibrary.Tests.pdb
 C:\Users\Ilia\documents\visual studio 2015\Projects\BookLibrary\BookLibrary.Tests\bin\Debug\BookLibrary.xml
+G:\GitEpam\Day7\BookLibrary\BookLibrary.Tests\bin\Debug\BookLibrary.Tests.dll
+G:\GitEpam\Day7\BookLibrary\BookLibrary.Tests\bin\Debug\BookLibrary.Tests.pdb
+G:\GitEpam\Day7\BookLibrary\BookLibrary.Tests\bin\Debug\BookLibrary.dll
+G:\GitEpam\Day7\BookLibrary\BookLibrary.Tests\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
+G:\GitEpam\Day7\BookLibrary\BookLibrary.Tests\bin\Debug\nunit.framework.dll
+G:\GitEpam\Day7\BookLibrary\BookLibrary.Tests\bin\Debug\BookLibrary.pdb
+G:\GitEpam\Day7\BookLibrary\BookLibrary.Tests\bin\Debug\BookLibrary.xml
+G:\GitEpam\Day7\BookLibrary\BookLibrary.Tests\bin\Debug\nunit.framework.xml
+G:\GitEpam\Day7\BookLibrary\BookLibrary.Tests\obj\Debug\BookLibrary.Tests.csprojResolveAssemblyReference.cache
+G:\GitEpam\Day7\BookLibrary\BookLibrary.Tests\obj\Debug\BookLibrary.Tests.dll
+G:\GitEpam\Day7\BookLibrary\BookLibrary.Tests\obj\Debug\BookLibrary.Tests.pdb

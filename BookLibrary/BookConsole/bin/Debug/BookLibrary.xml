@@ -63,6 +63,21 @@
             <param name="bookPublishDate">Book's publish day.</param>
             <param name="bookPrice">Price of the book.</param>
         </member>
+        <member name="M:BookLibrary.Book.Sort(BookLibrary.Book[],System.Collections.Generic.IComparer{BookLibrary.Book})">
+            <summary>
+            This method sorts array of books by given criterion.
+            </summary>
+            <param name="bookArray">Array of books.</param>
+            <param name="comparator">Creterion for sorting.</param>
+        </member>
+        <member name="M:BookLibrary.Book.Swap(BookLibrary.Book[],System.Int32,System.Int32)">
+            <summary>
+            This method replaces two elements into array of books.
+            </summary>
+            <param name="bookArray">Array of books.</param>
+            <param name="i">First place.</param>
+            <param name="j">Second place.</param>
+        </member>
         <member name="M:BookLibrary.Book.Equals(BookLibrary.Book)">
             <summary>
             This method compares current book to another one. Returns true if they are the same.
@@ -83,12 +98,6 @@
             </summary>
             <param name="other">Another book for comparison.</param>
             <returns>Returns 0 if these books were published at the same time. Returns -1 if current book was published earlier then another one.</returns>
-        </member>
-        <member name="M:BookLibrary.Book.CompareTo(System.Object)">
-            <summary>
-            This method compare current book to an object.
-            </summary>
-            <param name="obj">Instance of System.Object</param>
         </member>
         <member name="M:BookLibrary.Book.ToString">
             <summary>

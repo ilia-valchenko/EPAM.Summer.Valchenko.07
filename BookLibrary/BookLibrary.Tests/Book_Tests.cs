@@ -28,7 +28,9 @@ namespace BookLibrary.Tests
                 new Book("Valentin Pikul", "Ocean patrol", "07-08-1954", 3.01),              
             };
 
-            Book.Sort(originalArray, new CompareByAscendingAuthor());
+            //Book.Sort(originalArray, new CompareByAscendingAuthor());
+
+            Array.Sort(originalArray, new CompareByAscendingAuthor());
 
             Assert.IsTrue(IsEqualBookArrays(originalArray, expectedArray));
         }

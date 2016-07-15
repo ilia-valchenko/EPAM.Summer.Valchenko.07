@@ -4,3 +4,9 @@ C:\Users\Ilia\documents\visual studio 2015\Projects\BookLibrary\BookLibrary\obj\
 C:\Users\Ilia\documents\visual studio 2015\Projects\BookLibrary\BookLibrary\obj\Debug\BookLibrary.dll
 C:\Users\Ilia\documents\visual studio 2015\Projects\BookLibrary\BookLibrary\obj\Debug\BookLibrary.pdb
 C:\Users\Ilia\documents\visual studio 2015\Projects\BookLibrary\BookLibrary\bin\Debug\BookLibrary.XML
+G:\GitEpam\Day7\BookLibrary\BookLibrary\obj\Debug\BookLibrary.csprojResolveAssemblyReference.cache
+G:\GitEpam\Day7\BookLibrary\BookLibrary\obj\Debug\BookLibrary.dll
+G:\GitEpam\Day7\BookLibrary\BookLibrary\obj\Debug\BookLibrary.pdb
+G:\GitEpam\Day7\BookLibrary\BookLibrary\bin\Debug\BookLibrary.XML
+G:\GitEpam\Day7\BookLibrary\BookLibrary\bin\Debug\BookLibrary.dll
+G:\GitEpam\Day7\BookLibrary\BookLibrary\bin\Debug\BookLibrary.pdb

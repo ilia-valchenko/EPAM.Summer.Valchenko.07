@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace BookLibrary
@@ -12,22 +13,76 @@ namespace BookLibrary
     public class Book : IEquatable<Book>, IComparable<Book>
     {
         #region Private fields and public properties
+
         /// <summary>
         /// This property returns name the author of the book.
         /// </summary>
-        public string Author => author;
+        public string Author
+        {
+            get
+            {
+                return author;
+            }
+            set
+            {
+                Regex r = new Regex(@"^[A-Za-z\s]*$");
+                if (r.IsMatch(value))
+                    author = value;
+            }
+        }
+
         /// <summary>
         /// This property returns title of the book.
         /// </summary>
-        public string Title => title;
+        public string Title
+        {
+            get
+            {
+                return title;
+            }
+            set
+            {
+                Regex r = new Regex(@"^[A-Za-z\s]*$");
+                if (r.IsMatch(value))
+                    title = value;
+            }
+        }
+
         /// <summary>
         /// This property returns book's publish day.
         /// </summary>
-        public DateTime PublishDate => publishDate;
+        public DateTime PublishDate
+        {
+            get
+            {
+                return publishDate;
+            }
+            set
+            {
+                if(value > DateTime.Now)
+                    throw new ArgumentException("Publish date can't be later than now.");
+
+                publishDate = value;
+            }
+        }
+
         /// <summary>
         /// This property returns price of the book.
         /// </summary>
-        public double Price => price;
+        public double Price
+        {
+            get
+            {
+                return price;
+            }
+            set
+            {
+                if(value < 0)
+                    throw new ArgumentException("Price of book can't be less than zero.");
+
+                price = value;
+            }
+        }
 
         /// <summary>
         /// Name the author of the book.
@@ -45,9 +100,11 @@ namespace BookLibrary
         /// Price of the book.
         /// </summary>
         private double price; 
+
         #endregion
 
         #region Constructors
+
         /// <summary>
         /// Default constructor which calls another constructor with parameters.
         /// </summary>
@@ -62,39 +119,14 @@ namespace BookLibrary
         /// <param name="bookPrice">Price of the book.</param>
         public Book(string authorName, string bookTitle, string bookPublishDate, double bookPrice)
         {
-            author = authorName;
-            title = bookTitle;
-            DateTime.TryParse(bookPublishDate, out publishDate);
-            price = bookPrice;
-        }
-        #endregion
-
-        #region Sorting method and helpers methods
-        /// <summary>
-        /// This method sorts array of books by given criterion.
-        /// </summary>
-        /// <param name="bookArray">Array of books.</param>
-        /// <param name="comparator">Creterion for sorting.</param>
-        public static void Sort(Book[] bookArray, IComparer<Book> comparator)
-        {
-            for (int i = 0; i < bookArray.Length; i++)
-                for (int j = bookArray.Length - 1; j > i; j--)
-                    if (comparator.Compare(bookArray[j], bookArray[j - 1]) < 0)
-                        Swap(bookArray, j, j - 1);
+            Author = authorName;
+            Title = bookTitle;
+            DateTime bufferPublishDate;
+            DateTime.TryParse(bookPublishDate, out bufferPublishDate);
+            PublishDate = bufferPublishDate;
+            Price = bookPrice;
         }
 
-        /// <summary>
-        /// This method replaces two elements into array of books.
-        /// </summary>
-        /// <param name="bookArray">Array of books.</param>
-        /// <param name="i">First place.</param>
-        /// <param name="j">Second place.</param>
-        private static void Swap(Book[] bookArray, int i, int j)
-        {
-            Book buffer = bookArray[i];
-            bookArray[i] = bookArray[j];
-            bookArray[j] = buffer;
-        }
         #endregion
 
         #region Implemented and overridden methods
@@ -108,8 +140,8 @@ namespace BookLibrary
             if (other == null)
                 return false;
 
-            if (author.ToLower() == other.author.ToLower())
-                if (title.ToLower() == other.title.ToLower())
+            if (author.ToUpper() == other.author.ToUpper())
+                if (title.ToUpper() == other.title.ToUpper())
                     if (publishDate == other.publishDate)
                         if (price == other.price)
                             return true;
@@ -131,19 +163,37 @@ namespace BookLibrary
         /// <returns>Returns 0 if these books were published at the same time. Returns -1 if current book was published earlier then another one.</returns>
         public int CompareTo(Book other)
         {
+            if (other == null)
+                return 1;
+
             if (publishDate == other.publishDate)
                 return 0;
 
             if (publishDate < other.publishDate)
                 return -1;
-
+            
             return 1;
+        }
+
+        /// <summary>
+        /// This method compare current book to an object.
+        /// </summary>
+        /// <param name="obj">Instance of System.Object</param>
+        public int CompareTo(Object obj)
+        {
+            if (obj == null)
+                return 1;
+
+            if (!(obj is DateTime))
+                throw new ArgumentException("Argument must be DateTime.");
+
+            return this.CompareTo((DateTime)obj);
         }
 
         /// <summary>
         /// This method returns formated string with information about book such as name the author, title of the book, book's publish date, price of the book.
         /// </summary>
-        public override string ToString() => $"Author: {author}, Title: {title}, Publish date: {publishDate}, Price: {price}.";
+        public override string ToString() => $"Author: {Author}, Title: {Title}, Publish date: {PublishDate}, Price: {Price}.";
 
         /// <summary>
         /// This method returns hash code of string which represents book instance.
@@ -151,8 +201,12 @@ namespace BookLibrary
         /// <returns>Returns hash code.</returns>
         public override int GetHashCode()
         {
-            return this.ToString().GetHashCode();
-        }  
+            unchecked
+            {
+                return publishDate.GetHashCode() % price.GetHashCode() ^ 308;
+            }
+        } 
+        
         #endregion
     }
 }
