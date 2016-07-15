@@ -6,20 +6,33 @@ using System.Threading.Tasks;
 
 namespace GeometricFigures
 {
-    public sealed class Circle : Figures
+    public sealed class Circle : IFigure
     {
-        public double Radius => radius;
+        public double Radius
+        {
+            get
+            {
+                return radius;
+            }
+            set
+            {
+                if(radius < 0)
+                    throw new ArgumentException("Radius can't be less than zero.");
+                radius = value;
+            }
+        }
+
         private double radius;
 
         public Circle():this(0.0) { }
 
         public Circle(double radius)
         {
-            this.radius = radius;
+            Radius = radius;
         }
 
-        public override double GetAreaOfFigure() => Math.PI*Math.Pow(radius, 2);
+        public double GetAreaOfFigure() => Math.PI*Math.Pow(radius, 2);
 
-        public override double GetPerimeterOfFigure() => 2*Math.PI*radius;
+        public double GetPerimeterOfFigure() => 2*Math.PI*radius;
     }
 }

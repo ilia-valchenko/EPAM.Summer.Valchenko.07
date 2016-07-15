@@ -6,11 +6,49 @@ using System.Threading.Tasks;
 
 namespace GeometricFigures
 {
-    public class Triangle : Figures
+    public class Triangle : IFigure
     {
-        public double SideA => sideA;
-        public double SideB => sideB;
-        public double SideC => sideC;
+        public double SideA
+        {
+            get
+            {
+                return sideA;
+            }
+            set
+            {
+                if (value <= 0)
+                    throw new ArgumentException("Side A can't be less or equals to zero.");
+                sideA = value;
+            }
+        }
+
+        public double SideB
+        {
+            get
+            {
+                return sideB;
+            }
+            set
+            {
+                if (value <= 0)
+                    throw new ArgumentException("Side B can't be less or equals to zero.");
+                sideB = value;
+            }
+        }
+
+        public double SideC
+        {
+            get
+            {
+                return sideC;
+            }
+            set
+            {
+                if (value <= 0)
+                    throw new ArgumentException("Side C can't be less or equals to zero.");
+                sideC = value;
+            }
+        }
 
         private double sideA;
         private double sideB;
@@ -20,18 +58,17 @@ namespace GeometricFigures
 
         public Triangle(double sideA, double sideB, double sideC)
         {
-            this.sideA = sideA;
-            this.sideB = sideB;
-            this.sideC = sideC;
+            SideA = sideA;
+            SideB = sideB;
+            SideC = sideC;
         }
 
-        public override double GetAreaOfFigure()
+        public double GetAreaOfFigure()
         {
             double p = GetPerimeterOfFigure();
-
             return Math.Sqrt(p*(p-sideA)*(p-sideB)*(p-sideC));
         }
 
-        public override double GetPerimeterOfFigure() => sideA + sideB + sideC;
+        public double GetPerimeterOfFigure() => sideA + sideB + sideC;
     }
 }

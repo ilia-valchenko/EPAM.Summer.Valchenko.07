@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace GeometricFigures
 {
-    public abstract class Figures
+    public interface IFigure
     {
-        public abstract double GetAreaOfFigure();
-        public abstract double GetPerimeterOfFigure();      
+        double GetAreaOfFigure();
+        double GetPerimeterOfFigure();      
     }
 }

@@ -6,17 +6,49 @@ using System.Threading.Tasks;
 
 namespace GeometricFigures
 {
-    class Rectangle : Quadrilateral
+    public sealed class Rectangle : IFigure
     {
-        public new double SideA => base.SideA;
-        public new double SideB => base.SideB;
+        public double SideA
+        {
+            get
+            {
+                return sideA;
+            }
+            set
+            {
+                if(value <= 0)
+                    throw new ArgumentException("Side can't be less or equals to zero.");
+                sideA = value;
+            }
+        }
+
+        public double SideB
+        {
+            get
+            {
+                return sideB;
+            }
+            set
+            {
+                if (value <= 0)
+                    throw new ArgumentException("Side can't be less or equals to zero.");
+                sideB = value;
+            }
+        }
+
+        private double sideA;
+        private double sideB;
 
         public Rectangle():this(0.0,0.0) { }
 
-        public Rectangle(double a, double b):base(a, b, a, b) { }
+        public Rectangle(double sideA, double sideB)
+        {
+            SideA = sideA;
+            SideB = sideB;
+        }
 
-        public override double GetAreaOfFigure() => SideA*SideB;
+        public double GetAreaOfFigure() => SideA*SideB;
 
-        public override double GetPerimeterOfFigure() => 2*SideA + 2*SideB;
+        public double GetPerimeterOfFigure() => 2*(SideA + SideB);
     }
 }
