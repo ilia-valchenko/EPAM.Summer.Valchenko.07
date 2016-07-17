@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,7 +11,7 @@ namespace BookLibrary
     /// <summary>
     /// This class represents a book which has properties such as name of author, title of the book, publish date and price.
     /// </summary>
-    public class Book : IEquatable<Book>, IComparable<Book>
+    public class Book : IEquatable<Book>, IComparable<Book>, IEnumerable<Book>
     {
         #region Private fields and public properties
 
@@ -190,6 +191,11 @@ namespace BookLibrary
             return this.CompareTo((DateTime)obj);
         }
 
+        public IEnumerator<Book> GetEnumerator()
+        {
+            throw new NotImplementedException();
+        }
+
         /// <summary>
         /// This method returns formated string with information about book such as name the author, title of the book, book's publish date, price of the book.
         /// </summary>
@@ -205,8 +211,13 @@ namespace BookLibrary
             {
                 return publishDate.GetHashCode() % price.GetHashCode() ^ 308;
             }
-        } 
-        
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return GetEnumerator();
+        }
+
         #endregion
     }
 }
