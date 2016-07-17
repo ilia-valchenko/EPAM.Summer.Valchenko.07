@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{896816E1-E4AA-4BF8-9D97-75BEFFB67DB4}</ProjectGuid>
+    <ProjectGuid>{314D5E4A-FEED-412F-843E-DBDFF24AD1B4}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>BookConsole</RootNamespace>
-    <AssemblyName>BookConsole</AssemblyName>
+    <RootNamespace>ConsoleApplication</RootNamespace>
+    <AssemblyName>ConsoleApplication</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -50,10 +50,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\BookLibrary.Tests\BookLibrary.Tests.csproj">
-      <Project>{26e29846-fe06-4ea3-b7cc-8b48a922d86e}</Project>
-      <Name>BookLibrary.Tests</Name>
-    </ProjectReference>
     <ProjectReference Include="..\BookLibrary\BookLibrary.csproj">
       <Project>{ecca3fc8-e48d-4a71-8729-926f2ca24dba}</Project>
       <Name>BookLibrary</Name>

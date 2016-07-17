@@ -1,0 +1,9 @@
+G:\GitEpam\Day7\BookLibrary\ConsoleApplication\bin\Debug\ConsoleApplication.exe.config
+G:\GitEpam\Day7\BookLibrary\ConsoleApplication\bin\Debug\ConsoleApplication.exe
+G:\GitEpam\Day7\BookLibrary\ConsoleApplication\bin\Debug\ConsoleApplication.pdb
+G:\GitEpam\Day7\BookLibrary\ConsoleApplication\bin\Debug\BookLibrary.dll
+G:\GitEpam\Day7\BookLibrary\ConsoleApplication\bin\Debug\BookLibrary.pdb
+G:\GitEpam\Day7\BookLibrary\ConsoleApplication\bin\Debug\BookLibrary.xml
+G:\GitEpam\Day7\BookLibrary\ConsoleApplication\obj\Debug\ConsoleApplication.csprojResolveAssemblyReference.cache
+G:\GitEpam\Day7\BookLibrary\ConsoleApplication\obj\Debug\ConsoleApplication.exe
+G:\GitEpam\Day7\BookLibrary\ConsoleApplication\obj\Debug\ConsoleApplication.pdb

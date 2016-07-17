@@ -11,6 +11,7 @@ namespace BookLibrary
     /// <summary>
     /// This class represents a book which has properties such as name of author, title of the book, publish date and price.
     /// </summary>
+    [Serializable]
     public class Book : IEquatable<Book>, IComparable<Book>, IEnumerable<Book>
     {
         #region Private fields and public properties
