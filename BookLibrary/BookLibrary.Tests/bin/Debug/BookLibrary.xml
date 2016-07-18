@@ -4,6 +4,39 @@
         <name>BookLibrary</name>
     </assembly>
     <members>
+        <member name="T:BookLibrary.BinaryBookListStorage">
+            <summary>
+            This class manages the storage of books.
+            </summary>
+        </member>
+        <member name="M:BookLibrary.BinaryBookListStorage.#ctor">
+            <summary>
+            Default constructor which creates the default storage 'defaultstorage.bin'.
+            </summary>
+        </member>
+        <member name="M:BookLibrary.BinaryBookListStorage.#ctor(System.String)">
+            <summary>
+            Constructor with parameters which initializes path to the storage.
+            </summary>
+            <param name="fileName">Name of file which will be represent a storage.</param>
+        </member>
+        <member name="M:BookLibrary.BinaryBookListStorage.LoadBooks">
+            <summary>
+            This method loads books from the storage.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:BookLibrary.BinaryBookListStorage.SaveBooks(System.Collections.Generic.IEnumerable{BookLibrary.Book})">
+            <summary>
+            This method saves books into the storage.
+            </summary>
+            <param name="books">List of books which will be stored.</param>
+        </member>
+        <member name="F:BookLibrary.BinaryBookListStorage.path">
+            <summary>
+            Full path to the file which represents storage.
+            </summary>
+        </member>
         <member name="T:BookLibrary.Book">
             <summary>
             This class represents a book which has properties such as name of author, title of the book, publish date and price.
@@ -27,26 +60,6 @@
         <member name="P:BookLibrary.Book.Price">
             <summary>
             This property returns price of the book.
-            </summary>
-        </member>
-        <member name="F:BookLibrary.Book.author">
-            <summary>
-            Name the author of the book.
-            </summary>
-        </member>
-        <member name="F:BookLibrary.Book.title">
-            <summary>
-            Title of the book.
-            </summary>
-        </member>
-        <member name="F:BookLibrary.Book.publishDate">
-            <summary>
-            Book's publish date.
-            </summary>
-        </member>
-        <member name="F:BookLibrary.Book.price">
-            <summary>
-            Price of the book.
             </summary>
         </member>
         <member name="M:BookLibrary.Book.#ctor">
@@ -100,6 +113,119 @@
             This method returns hash code of string which represents book instance.
             </summary>
             <returns>Returns hash code.</returns>
+        </member>
+        <member name="F:BookLibrary.Book.author">
+            <summary>
+            Name the author of the book.
+            </summary>
+        </member>
+        <member name="F:BookLibrary.Book.title">
+            <summary>
+            Title of the book.
+            </summary>
+        </member>
+        <member name="F:BookLibrary.Book.publishDate">
+            <summary>
+            Book's publish date.
+            </summary>
+        </member>
+        <member name="F:BookLibrary.Book.price">
+            <summary>
+            Price of the book.
+            </summary>
+        </member>
+        <member name="T:BookLibrary.BookListService">
+            <summary>
+            This class provides basic operation with collection of books.
+            </summary>
+        </member>
+        <member name="P:BookLibrary.BookListService.Books">
+            <summary>
+            This property returns current list of books.
+            </summary>
+        </member>
+        <member name="M:BookLibrary.BookListService.#ctor">
+            <summary>
+            Default constructor.
+            </summary>
+        </member>
+        <member name="M:BookLibrary.BookListService.#ctor(BookLibrary.BinaryBookListStorage)">
+            <summary>
+            This constructor takes a BinaryBookListStorage as a parameter.
+            </summary>
+            <param name="storage"></param>
+        </member>
+        <member name="M:BookLibrary.BookListService.AddBook(BookLibrary.Book)">
+            <summary>
+            Add book to a storage.
+            </summary>
+            <param name="book">Book which must be added.</param>
+        </member>
+        <member name="M:BookLibrary.BookListService.RemoveBook(BookLibrary.Book)">
+            <summary>
+            Remove book from a storage.
+            </summary>
+            <param name="book">The book which must be removed.</param>
+        </member>
+        <member name="M:BookLibrary.BookListService.SortByTag(System.Comparison{BookLibrary.Book})">
+            <summary>
+            This method sorts list of books by using delegate Comparision.
+            </summary>
+            <param name="comparison">Criterion for comparison.</param>
+        </member>
+        <member name="M:BookLibrary.BookListService.SortByTag(System.Collections.Generic.IComparer{BookLibrary.Book})">
+            <summary>
+            This method sorts list of books by using IComparer.
+            </summary>
+            <param name="comparer">Criterion for comparison.</param>
+        </member>
+        <member name="M:BookLibrary.BookListService.SaveBooksToStorage">
+            <summary>
+            This method saves current list of books into a storage.
+            </summary>
+        </member>
+        <member name="M:BookLibrary.BookListService.LoadBooksFromStorage">
+            <summary>
+            This method loads books from the storage into a current list of books.
+            </summary>
+        </member>
+        <member name="M:BookLibrary.BookListService.FindByTag(System.Func{System.Collections.Generic.List{BookLibrary.Book},System.Collections.Generic.List{BookLibrary.Book}})">
+            <summary>
+            This method finds list of books by given tag.
+            </summary>
+            <returns>List of books.</returns>
+        </member>
+        <member name="F:BookLibrary.BookListService.storage">
+            <summary>
+            Class represents a storage for books.
+            </summary>
+        </member>
+        <member name="F:BookLibrary.BookListService.books">
+            <summary>
+            List of books.
+            </summary>
+        </member>
+        <member name="F:BookLibrary.BookListService.log">
+            <summary>
+            Logger for warrning and error messages.
+            </summary>
+        </member>
+        <member name="T:BookLibrary.IBookListStorage">
+            <summary>
+            Interface provides two basic operation for storage of books.
+            </summary>
+        </member>
+        <member name="M:BookLibrary.IBookListStorage.LoadBooks">
+            <summary>
+            Method which loads books from a storage.
+            </summary>
+            <returns>Returns list of books.</returns>
+        </member>
+        <member name="M:BookLibrary.IBookListStorage.SaveBooks(System.Collections.Generic.IEnumerable{BookLibrary.Book})">
+            <summary>
+            This method packs books into a storage.
+            </summary>
+            <param name="books">Books which must be stored.</param>
         </member>
     </members>
 </doc>

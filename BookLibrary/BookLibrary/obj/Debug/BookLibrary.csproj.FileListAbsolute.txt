@@ -10,3 +10,6 @@ G:\GitEpam\Day7\BookLibrary\BookLibrary\obj\Debug\BookLibrary.pdb
 G:\GitEpam\Day7\BookLibrary\BookLibrary\bin\Debug\BookLibrary.XML
 G:\GitEpam\Day7\BookLibrary\BookLibrary\bin\Debug\BookLibrary.dll
 G:\GitEpam\Day7\BookLibrary\BookLibrary\bin\Debug\BookLibrary.pdb
+G:\GitEpam\Day7\BookLibrary\BookLibrary\bin\Debug\NLog.config
+G:\GitEpam\Day7\BookLibrary\BookLibrary\bin\Debug\NLog.dll
+G:\GitEpam\Day7\BookLibrary\BookLibrary\bin\Debug\NLog.xml

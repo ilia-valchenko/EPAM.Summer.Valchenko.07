@@ -13,13 +13,13 @@ namespace BookLibrary
     public interface IBookListStorage
     {
         /// <summary>
-        /// Load book from a storage.
+        /// Method which loads books from a storage.
         /// </summary>
         /// <returns>Returns list of books.</returns>
         List<Book> LoadBooks();
 
         /// <summary>
-        /// This method packs given books into a storage.
+        /// This method packs books into a storage.
         /// </summary>
         /// <param name="books">Books which must be stored.</param>
         void SaveBooks(IEnumerable<Book> books);

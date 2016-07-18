@@ -11,16 +11,34 @@ namespace ConsoleApplication
     {
         static void Main(string[] args)
         {
-            List<Book> originalArray = new List<Book>();
-            originalArray.Add(new Book());
-            originalArray.Add(new Book("Arkady and Boris Strugatsky", "Hard to Be a God", "10-03-1989", 1.32));
-            originalArray.Add(new Book("James Fenimore Cooper", "The Last of the Mohicans", "02-06-1826", 0.52));
-            originalArray.Add(new Book("Valentin Pikul", "Ocean patrol", "07-08-1954", 3.01));
-            originalArray.Add(new Book("Jon Skeet", "C# in Depth", "20-03-2010", 12.80));
+            var originalArray = new List<Book>()
+            { 
+                new Book("Arkady and Boris Strugatsky", "Hard to Be a God", "10-03-1989", 1.32),
+                new Book("James Fenimore Cooper", "The Last of the Mohicans", "02-06-1826", 0.52),
+                new Book("Valentin Pikul", "Ocean patrol", "07-08-1954", 3.01),
+                new Book("Jon Skeet", "C# in Depth", "20-03-2010", 12.80),
+                new Book()
+            };
 
-            BinaryBookListStorage storage = new BinaryBookListStorage("books");
+            var storage = new BinaryBookListStorage("storage.bin");
 
             storage.SaveBooks(originalArray);
+            
+            // Create a new collection of books.
+            var otherBooks = new List<Book>()
+            {
+                new Book("Joanne Rowling", "Harry Potter", "20-06-2010", 15.73)
+            };
+
+            // Declare a new storage with the same path.
+            var newStorage = new BinaryBookListStorage("storage.bin");
+
+            // Add new books to the existing storage.
+            newStorage.SaveBooks(otherBooks);
+            
+            Console.WriteLine("LOADING BOOKS:" + Environment.NewLine);
+            foreach (Book book in storage.LoadBooks())
+                Console.WriteLine(book + Environment.NewLine);
 
             Console.WriteLine(Environment.NewLine + "Tap to continue...");
             Console.ReadKey(true);

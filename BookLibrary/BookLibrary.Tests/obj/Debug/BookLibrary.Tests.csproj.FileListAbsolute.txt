@@ -20,3 +20,6 @@ G:\GitEpam\Day7\BookLibrary\BookLibrary.Tests\bin\Debug\nunit.framework.xml
 G:\GitEpam\Day7\BookLibrary\BookLibrary.Tests\obj\Debug\BookLibrary.Tests.csprojResolveAssemblyReference.cache
 G:\GitEpam\Day7\BookLibrary\BookLibrary.Tests\obj\Debug\BookLibrary.Tests.dll
 G:\GitEpam\Day7\BookLibrary\BookLibrary.Tests\obj\Debug\BookLibrary.Tests.pdb
+G:\GitEpam\Day7\BookLibrary\BookLibrary.Tests\bin\Debug\NLog.config
+G:\GitEpam\Day7\BookLibrary\BookLibrary.Tests\bin\Debug\NLog.dll
+G:\GitEpam\Day7\BookLibrary\BookLibrary.Tests\bin\Debug\NLog.xml

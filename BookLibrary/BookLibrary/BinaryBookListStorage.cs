@@ -3,45 +3,54 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
 
 namespace BookLibrary
 {
     /// <summary>
-    /// This class manages the book store.
+    /// This class manages the storage of books.
     /// </summary>
     public class BinaryBookListStorage : IBookListStorage
     {
+        #region Constructors
         /// <summary>
-        /// Constructor with parameters.
+        /// Default constructor which creates the default storage 'defaultstorage.bin'.
+        /// </summary>
+        public BinaryBookListStorage() : this("defaultstorage.bin") { }
+
+        /// <summary>
+        /// Constructor with parameters which initializes path to the storage.
         /// </summary>
         /// <param name="fileName">Name of file which will be represent a storage.</param>
         public BinaryBookListStorage(string fileName)
         {
-            path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, fileName + ".txt");
-
-            try
-            {
-                if (File.Exists(path))
-                    File.Delete(path);
-
-                fileStream = File.Create(path);
-            }
-            catch (Exception exc)
-            {
-                // logger here
-            }
+            path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, fileName);
         }
+        #endregion
 
+        #region Basic operations for storage
         /// <summary>
         /// This method loads books from the storage.
         /// </summary>
         /// <returns></returns>
         public List<Book> LoadBooks()
         {
-            var bformatter = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
-            return (List<Book>)bformatter.Deserialize(fileStream);
+            var books = new List<Book>();
+
+            if (File.Exists(path))
+            {
+                using (var bReader = new BinaryReader(File.Open(path, FileMode.Open)))
+                {
+                    while (bReader.PeekChar() > -1)
+                        books.Add(new Book(bReader.ReadString(), bReader.ReadString(), bReader.ReadString(), bReader.ReadDouble()));
+                }
+            }
+            else
+                throw new FileNotFoundException("This storage doesn't exist.");
+
+            return books;
         }
 
         /// <summary>
@@ -50,28 +59,30 @@ namespace BookLibrary
         /// <param name="books">List of books which will be stored.</param>
         public void SaveBooks(IEnumerable<Book> books)
         {
-            if (!File.Exists(path))
-                throw new FileNotFoundException("Something happened with textfile.");
+            if (books == null)
+                throw new ArgumentNullException(nameof(books));
 
-            var bformatter = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
+            var existingBooks = LoadBooks();
+            existingBooks.AddRange(books.ToList());
 
-            foreach (Book book in books)
-               bformatter.Serialize(fileStream, book);
+            using (var bWriter = new BinaryWriter(File.Open(path, FileMode.OpenOrCreate)))
+            {
+                foreach (Book book in existingBooks)
+                {
+                    bWriter.Write(book.Author);
+                    bWriter.Write(book.Title);
+                    bWriter.Write(book.PublishDate.ToString());
+                    bWriter.Write(book.Price);
+                }
+            }
         }
+        #endregion
 
-        /// <summary>
-        /// This method saves one book into the storage.
-        /// </summary>
-        /// <param name="book">Book which must be stored.</param>
-        public void SaveBook(Book book) => SaveBooks(new Book[] {book});
-
+        #region Private fields
         /// <summary>
         /// Full path to the file which represents storage.
         /// </summary>
-        private readonly string path;
-        /// <summary>
-        /// Stream for operations.
-        /// </summary>
-        private readonly FileStream fileStream;
+        private readonly string path; 
+        #endregion
     }
 }

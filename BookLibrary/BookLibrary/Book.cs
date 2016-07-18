@@ -11,10 +11,9 @@ namespace BookLibrary
     /// <summary>
     /// This class represents a book which has properties such as name of author, title of the book, publish date and price.
     /// </summary>
-    [Serializable]
     public class Book : IEquatable<Book>, IComparable<Book>, IEnumerable<Book>
     {
-        #region Private fields and public properties
+        #region Public properties
 
         /// <summary>
         /// This property returns name the author of the book.
@@ -44,8 +43,8 @@ namespace BookLibrary
             }
             set
             {
-                Regex r = new Regex(@"^[A-Za-z\s]*$");
-                if (r.IsMatch(value))
+                //Regex r = new Regex(@"(?<=\d\s)([a-zA-Z]+\s)*[a-zA-Z]+");
+                //if (r.IsMatch(value))
                     title = value;
             }
         }
@@ -85,24 +84,6 @@ namespace BookLibrary
                 price = value;
             }
         }
-
-        /// <summary>
-        /// Name the author of the book.
-        /// </summary>
-        private string author;
-        /// <summary>
-        /// Title of the book.
-        /// </summary>
-        private string title;
-        /// <summary>
-        /// Book's publish date.
-        /// </summary>
-        private DateTime publishDate;
-        /// <summary>
-        /// Price of the book.
-        /// </summary>
-        private double price; 
-
         #endregion
 
         #region Constructors
@@ -201,7 +182,7 @@ namespace BookLibrary
         /// This method returns formated string with information about book such as name the author, title of the book, book's publish date, price of the book.
         /// </summary>
         public override string ToString() => $"Author: {Author}, Title: {Title}, Publish date: {PublishDate}, Price: {Price}.";
-
+        
         /// <summary>
         /// This method returns hash code of string which represents book instance.
         /// </summary>
@@ -218,6 +199,30 @@ namespace BookLibrary
         {
             return GetEnumerator();
         }
+
+        #endregion
+
+        #region Private fileds
+
+        /// <summary>
+        /// Name the author of the book.
+        /// </summary>
+        private string author;
+
+        /// <summary>
+        /// Title of the book.
+        /// </summary>
+        private string title;
+
+        /// <summary>
+        /// Book's publish date.
+        /// </summary>
+        private DateTime publishDate;
+
+        /// <summary>
+        /// Price of the book.
+        /// </summary>
+        private double price; 
 
         #endregion
     }

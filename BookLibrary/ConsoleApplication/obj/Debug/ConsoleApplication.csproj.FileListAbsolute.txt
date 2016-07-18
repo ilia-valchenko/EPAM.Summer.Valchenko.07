@@ -7,3 +7,6 @@ G:\GitEpam\Day7\BookLibrary\ConsoleApplication\bin\Debug\BookLibrary.xml
 G:\GitEpam\Day7\BookLibrary\ConsoleApplication\obj\Debug\ConsoleApplication.csprojResolveAssemblyReference.cache
 G:\GitEpam\Day7\BookLibrary\ConsoleApplication\obj\Debug\ConsoleApplication.exe
 G:\GitEpam\Day7\BookLibrary\ConsoleApplication\obj\Debug\ConsoleApplication.pdb
+G:\GitEpam\Day7\BookLibrary\ConsoleApplication\bin\Debug\NLog.config
+G:\GitEpam\Day7\BookLibrary\ConsoleApplication\bin\Debug\NLog.dll
+G:\GitEpam\Day7\BookLibrary\ConsoleApplication\bin\Debug\NLog.xml
