@@ -1,0 +1,2 @@
+2016-07-19 21:00:39.3485|INFO|BookLibrary.BookListService|All right! Constructor works!
+2016-07-19 21:00:47.5300|INFO|BookLibrary.BookListService|All right! Constructor works!

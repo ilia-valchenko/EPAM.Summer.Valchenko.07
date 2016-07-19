@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
+using static BookLibrary.SingleLogger;
 
 namespace BookLibrary
 {
@@ -27,6 +28,7 @@ namespace BookLibrary
         public BinaryBookListStorage(string fileName)
         {
             path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, fileName);
+            log.Info($"Created path for log file: {path}.");
         }
         #endregion
 
@@ -44,11 +46,15 @@ namespace BookLibrary
                 using (var bReader = new BinaryReader(File.Open(path, FileMode.Open)))
                 {
                     while (bReader.PeekChar() > -1)
-                        books.Add(new Book(bReader.ReadString(), bReader.ReadString(), bReader.ReadString(), bReader.ReadDouble()));
+                        books.Add(new Book(bReader.ReadString(), bReader.ReadString(), bReader.ReadString(),
+                            bReader.ReadDouble()));
                 }
             }
             else
+            {
+                log.Error($"Storage at the address does not exist. Wrong path: {path}.");
                 throw new FileNotFoundException("This storage doesn't exist.");
+            }
 
             return books;
         }
@@ -59,9 +65,12 @@ namespace BookLibrary
         /// <param name="books">List of books which will be stored.</param>
         public void SaveBooks(IEnumerable<Book> books)
         {
-            if (books == null)
+            if (ReferenceEquals(books, null))
+            {
+                log.Error("Attemt to save book which is null.");
                 throw new ArgumentNullException(nameof(books));
-
+            }
+                
             var existingBooks = LoadBooks();
             existingBooks.AddRange(books.ToList());
 

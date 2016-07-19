@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel.Design;
 using System.Linq;
 using System.Text;
@@ -7,54 +8,63 @@ using System.Threading;
 using System.Threading.Tasks;
 using NLog;
 using NLog.Fluent;
+using static BookLibrary.SingleLogger;
 
 namespace BookLibrary
 {
     /// <summary>
     /// This class provides basic operation with collection of books.
     /// </summary>
-    public class BookListService
+    public class BookListService 
     {
         #region Public fields and properties
         /// <summary>
-        /// This property returns current list of books.
+        /// This property returns read only collection of books.
         /// </summary>
-        public List<Book> Books { get; }
+        public ReadOnlyCollection<Book> Books => new ReadOnlyCollection<Book>(books);
         #endregion
 
         #region Constructors
         /// <summary>
         /// Default constructor.
         /// </summary>
-        public BookListService() : this(new BinaryBookListStorage()) { }
+        public BookListService() : this(new List<Book>()) { }
 
         /// <summary>
-        /// This constructor takes a BinaryBookListStorage as a parameter.
+        /// This constructor takes books as IEnumerable.
         /// </summary>
-        /// <param name="storage"></param>
-        public BookListService(BinaryBookListStorage storage)
+        /// <param name="books">Books as IEnumerable.</param>
+        public BookListService(IEnumerable<Book> books)
         {
-            if (storage == null)
-                throw new ArgumentNullException(nameof(storage));    
-
-            this.storage = storage;
-            books = new List<Book>();
+            if (ReferenceEquals(books, null))
+            {
+                log.Error("Your input book collection for BookListService constructor is null.");
+                throw new ArgumentNullException(nameof(books));
+            }
+                
+            this.books = books.ToList();
         }
         #endregion
 
         #region Add and Remove methods
         /// <summary>
-        /// Add book to a storage.
+        /// Add a book to a service.
         /// </summary>
         /// <param name="book">Book which must be added.</param>
         public void AddBook(Book book)
         {
-            if (book == null)
+            if (ReferenceEquals(book, null))
+            {
+                log.Error("Attempt to add book which is null.");
                 throw new ArgumentNullException(nameof(book));
+            }
 
             if (books.Contains(book))
+            {
+                log.Warn("Attempt to add book which is already exist in current list of books.");
                 throw new ArgumentException("This book already exist.");
-
+            }
+                
             books.Add(book);
         }
 
@@ -64,64 +74,81 @@ namespace BookLibrary
         /// <param name="book">The book which must be removed.</param>
         public void RemoveBook(Book book)
         {
-            if (book == null)
+            if (ReferenceEquals(book, null))
+            {
+                log.Error("Attempt to remove book which is null.");
                 throw new ArgumentNullException(nameof(book));
+            }
 
             if (!books.Contains(book))
+            {
+                log.Error("Attempt to remove book which doesn't exist in the current list.");
                 throw new ArgumentException("This book doesn't exist.");
-
+            }
+                
             books.Remove(book);
         } 
         #endregion
 
         #region Sorting methods
+
         /// <summary>
         /// This method sorts list of books by using delegate Comparision.
         /// </summary>
         /// <param name="comparison">Criterion for comparison.</param>
-        public void SortByTag(Comparison<Book> comparison) => books.Sort(comparison);
+        public void SortByTag(Comparison<Book> comparison)
+        {
+            if (ReferenceEquals(comparison, null))
+            {
+                log.Error("Delegate Comparision<Book> in SortByTag is null.");
+                throw new ArgumentNullException(nameof(comparison));
+            }
+                               
+            books.Sort(comparison);
+        }
 
         /// <summary>
         /// This method sorts list of books by using IComparer.
         /// </summary>
         /// <param name="comparer">Criterion for comparison.</param>
-        public void SortByTag(IComparer<Book> comparer) => books.Sort(comparer);
-        #endregion
+        public void SortByTag(IComparer<Book> comparer)
+        {
+            if (ReferenceEquals(comparer, null))
+            {
+                log.Error("Comparer for SortByTag method is null.");
+                throw new ArgumentNullException(nameof(comparer));
+            }
 
-        #region SaveToStorage and LoadFromStorage methods
-        /// <summary>
-        /// This method saves current list of books into a storage.
-        /// </summary>
-        public void SaveBooksToStorage() => storage.SaveBooks(books);
-
-        /// <summary>
-        /// This method loads books from the storage into a current list of books.
-        /// </summary>
-        public void LoadBooksFromStorage() => books.AddRange(storage.LoadBooks()); 
+            books.Sort(comparer);
+        } 
         #endregion
 
         /// <summary>
         /// This method finds list of books by given tag.
         /// </summary>
         /// <returns>List of books.</returns>
-        public List<Book> FindByTag(Func<List<Book>, List<Book>> find)
+        public List<Book> FindByTag(Predicate<Book> predicate)
         {
-            throw new NotImplementedException();
+            if (ReferenceEquals(predicate, null))
+            {
+                log.Error("Predicate is null in FindByTag method.");
+                throw new ArgumentNullException(nameof(predicate));
+            }
+                
+            var result = new List<Book>();
+
+            foreach (Book book in books)
+                if(predicate(book))
+                    result.Add(book);
+
+            return result;
         }
 
         #region Private fields
         /// <summary>
-        /// Class represents a storage for books.
-        /// </summary>
-        private readonly BinaryBookListStorage storage;
-        /// <summary>
         /// List of books.
         /// </summary>
         private readonly List<Book> books;
-        /// <summary>
-        /// Logger for warrning and error messages.
-        /// </summary>
-        private static Logger log = LogManager.GetCurrentClassLogger();
         #endregion
     }
 }

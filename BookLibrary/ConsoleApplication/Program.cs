@@ -9,9 +9,14 @@ namespace ConsoleApplication
 {
     class Program
     {
+        
+
+       
+   
+
         static void Main(string[] args)
         {
-            var originalArray = new List<Book>()
+            /*var originalArray = new List<Book>()
             { 
                 new Book("Arkady and Boris Strugatsky", "Hard to Be a God", "10-03-1989", 1.32),
                 new Book("James Fenimore Cooper", "The Last of the Mohicans", "02-06-1826", 0.52),
@@ -25,7 +30,7 @@ namespace ConsoleApplication
             storage.SaveBooks(originalArray);
             
             // Create a new collection of books.
-            var otherBooks = new List<Book>()
+            var otherBooks = new List<Book>
             {
                 new Book("Joanne Rowling", "Harry Potter", "20-06-2010", 15.73)
             };
@@ -38,10 +43,25 @@ namespace ConsoleApplication
             
             Console.WriteLine("LOADING BOOKS:" + Environment.NewLine);
             foreach (Book book in storage.LoadBooks())
-                Console.WriteLine(book + Environment.NewLine);
+                Console.WriteLine(book + Environment.NewLine);*/
+
+            var s = new BookListService();
+
+            s.SortByTag(CustomComparator);
 
             Console.WriteLine(Environment.NewLine + "Tap to continue...");
             Console.ReadKey(true);
+        }
+
+        public static int CustomComparator(Book x, Book y)
+        {
+            if (x.Price == y.Price)
+                return 0;
+
+            if (x.Price > y.Price)
+                return 1;
+
+            return -1;
         }
     }
 }

@@ -149,15 +149,15 @@
             Default constructor.
             </summary>
         </member>
-        <member name="M:BookLibrary.BookListService.#ctor(BookLibrary.BinaryBookListStorage)">
+        <member name="M:BookLibrary.BookListService.#ctor(System.Collections.Generic.IEnumerable{BookLibrary.Book})">
             <summary>
-            This constructor takes a BinaryBookListStorage as a parameter.
+            This constructor takes books as IEnumerable.
             </summary>
-            <param name="storage"></param>
+            <param name="books">Books as IEnumerable.</param>
         </member>
         <member name="M:BookLibrary.BookListService.AddBook(BookLibrary.Book)">
             <summary>
-            Add book to a storage.
+            Add a book to a service.
             </summary>
             <param name="book">Book which must be added.</param>
         </member>
@@ -179,26 +179,11 @@
             </summary>
             <param name="comparer">Criterion for comparison.</param>
         </member>
-        <member name="M:BookLibrary.BookListService.SaveBooksToStorage">
-            <summary>
-            This method saves current list of books into a storage.
-            </summary>
-        </member>
-        <member name="M:BookLibrary.BookListService.LoadBooksFromStorage">
-            <summary>
-            This method loads books from the storage into a current list of books.
-            </summary>
-        </member>
-        <member name="M:BookLibrary.BookListService.FindByTag(System.Func{System.Collections.Generic.List{BookLibrary.Book},System.Collections.Generic.List{BookLibrary.Book}})">
+        <member name="M:BookLibrary.BookListService.FindByTag(System.Predicate{BookLibrary.Book})">
             <summary>
             This method finds list of books by given tag.
             </summary>
             <returns>List of books.</returns>
-        </member>
-        <member name="F:BookLibrary.BookListService.storage">
-            <summary>
-            Class represents a storage for books.
-            </summary>
         </member>
         <member name="F:BookLibrary.BookListService.books">
             <summary>
