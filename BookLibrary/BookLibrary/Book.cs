@@ -11,7 +11,7 @@ namespace BookLibrary
     /// <summary>
     /// This class represents a book which has properties such as name of author, title of the book, publish date and price.
     /// </summary>
-    public class Book : IEquatable<Book>, IComparable<Book>, IEnumerable<Book>
+    public class Book : IComparable, IComparable<Book>, IEquatable<Book>, IEnumerable<Book>, IEnumerator<Book>
     {
         #region Public properties
 
@@ -26,7 +26,7 @@ namespace BookLibrary
             }
             set
             {
-                Regex r = new Regex(@"^[A-Za-z\s]*$");
+                var r = new Regex(@"^[A-Za-z\s]*$");
                 if (r.IsMatch(value))
                     author = value;
             }
@@ -84,6 +84,22 @@ namespace BookLibrary
                 price = value;
             }
         }
+
+        public Book Current
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+        }
+
+        object IEnumerator.Current
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+        }
         #endregion
 
         #region Constructors
@@ -120,13 +136,16 @@ namespace BookLibrary
         /// <returns>Returns true if they are the same. Returns false if the aren't equal.</returns>
         public bool Equals(Book other)
         {
-            if (other == null)
+            if (ReferenceEquals(other, null))
                 return false;
 
-            if (author.ToUpper() == other.author.ToUpper())
-                if (title.ToUpper() == other.title.ToUpper())
-                    if (publishDate == other.publishDate)
-                        if (price == other.price)
+            if (ReferenceEquals(this, other))
+                return true;
+
+            if (string.Compare(author.ToUpper(), other.author.ToUpper(), StringComparison.CurrentCulture) == 0)
+                if (string.Compare(title.ToUpper(), other.title.ToUpper(), StringComparison.CurrentCulture) == 0)
+                    if (publishDate.Equals(other.publishDate))
+                        if (price.Equals(other.price))
                             return true;
 
             return false;
@@ -137,7 +156,19 @@ namespace BookLibrary
         /// </summary>
         /// <param name="obj">Instance of Object.</param>
         /// <returns>Return false if objects aren't equal.</returns>
-        public override bool Equals(object obj) => this.Equals(obj as Book);
+        public override bool Equals(object obj)
+        {
+            if (ReferenceEquals(obj, null))
+                return false;
+
+            if (ReferenceEquals(this, obj))
+                return true;
+
+            if (this.GetType() != obj.GetType())
+                return false;
+
+            return this.Equals(obj as Book);
+        }
 
         /// <summary>
         /// This method compare current book to another one by publish date.
@@ -146,10 +177,10 @@ namespace BookLibrary
         /// <returns>Returns 0 if these books were published at the same time. Returns -1 if current book was published earlier then another one.</returns>
         public int CompareTo(Book other)
         {
-            if (other == null)
+            if (ReferenceEquals(other, null))
                 return 1;
 
-            if (publishDate == other.publishDate)
+            if (publishDate.Equals(other.publishDate))
                 return 0;
 
             if (publishDate < other.publishDate)
@@ -162,18 +193,33 @@ namespace BookLibrary
         /// This method compare current book to an object.
         /// </summary>
         /// <param name="obj">Instance of System.Object</param>
-        public int CompareTo(Object obj)
+        public int CompareTo(object obj) => this.CompareTo(obj as Book);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        public IEnumerator<Book> GetEnumerator()
         {
-            if (obj == null)
-                return 1;
-
-            if (!(obj is DateTime))
-                throw new ArgumentException("Argument must be DateTime.");
-
-            return this.CompareTo((DateTime)obj);
+            throw new NotImplementedException();
         }
 
-        public IEnumerator<Book> GetEnumerator()
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return GetEnumerator();
+        }
+
+        public void Dispose()
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool MoveNext()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Reset()
         {
             throw new NotImplementedException();
         }
@@ -194,16 +240,9 @@ namespace BookLibrary
                 return publishDate.GetHashCode() % price.GetHashCode() ^ 308;
             }
         }
-
-        IEnumerator IEnumerable.GetEnumerator()
-        {
-            return GetEnumerator();
-        }
-
         #endregion
 
         #region Private fileds
-
         /// <summary>
         /// Name the author of the book.
         /// </summary>
@@ -223,7 +262,6 @@ namespace BookLibrary
         /// Price of the book.
         /// </summary>
         private double price; 
-
         #endregion
     }
 }

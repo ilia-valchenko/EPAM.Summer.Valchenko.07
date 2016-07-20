@@ -103,6 +103,12 @@
             </summary>
             <param name="obj">Instance of System.Object</param>
         </member>
+        <member name="M:BookLibrary.Book.GetEnumerator">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
         <member name="M:BookLibrary.Book.ToString">
             <summary>
             This method returns formated string with information about book such as name the author, title of the book, book's publish date, price of the book.
@@ -141,7 +147,7 @@
         </member>
         <member name="P:BookLibrary.BookListService.Books">
             <summary>
-            This property returns current list of books.
+            This property returns read only collection of books.
             </summary>
         </member>
         <member name="M:BookLibrary.BookListService.#ctor">
@@ -190,11 +196,6 @@
             List of books.
             </summary>
         </member>
-        <member name="F:BookLibrary.BookListService.log">
-            <summary>
-            Logger for warrning and error messages.
-            </summary>
-        </member>
         <member name="T:BookLibrary.IBookListStorage">
             <summary>
             Interface provides two basic operation for storage of books.
@@ -211,6 +212,16 @@
             This method packs books into a storage.
             </summary>
             <param name="books">Books which must be stored.</param>
+        </member>
+        <member name="T:BookLibrary.SingleLogger">
+            <summary>
+            This is common class for writting messages to log.
+            </summary>
+        </member>
+        <member name="F:BookLibrary.SingleLogger.log">
+            <summary>
+            This is common log for application.
+            </summary>
         </member>
     </members>
 </doc>
