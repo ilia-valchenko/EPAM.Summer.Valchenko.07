@@ -5,16 +5,17 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using System.Runtime.Serialization.Formatters.Binary;
 
 namespace BookLibrary
 {
     /// <summary>
     /// This class represents a book which has properties such as name of author, title of the book, publish date and price.
     /// </summary>
-    public class Book : IComparable, IComparable<Book>, IEquatable<Book>, IEnumerable<Book>, IEnumerator<Book>
+    [Serializable]
+    public class Book : IComparable, IComparable<Book>, IEquatable<Book>
     {
         #region Public properties
-
         /// <summary>
         /// This property returns name the author of the book.
         /// </summary>
@@ -84,26 +85,9 @@ namespace BookLibrary
                 price = value;
             }
         }
-
-        public Book Current
-        {
-            get
-            {
-                throw new NotImplementedException();
-            }
-        }
-
-        object IEnumerator.Current
-        {
-            get
-            {
-                throw new NotImplementedException();
-            }
-        }
         #endregion
 
         #region Constructors
-
         /// <summary>
         /// Default constructor which calls another constructor with parameters.
         /// </summary>
@@ -125,7 +109,6 @@ namespace BookLibrary
             PublishDate = bufferPublishDate;
             Price = bookPrice;
         }
-
         #endregion
 
         #region Implemented and overridden methods
@@ -136,7 +119,7 @@ namespace BookLibrary
         /// <returns>Returns true if they are the same. Returns false if the aren't equal.</returns>
         public bool Equals(Book other)
         {
-            if (ReferenceEquals(other, null))
+            if (other == null)
                 return false;
 
             if (ReferenceEquals(this, other))
@@ -158,7 +141,7 @@ namespace BookLibrary
         /// <returns>Return false if objects aren't equal.</returns>
         public override bool Equals(object obj)
         {
-            if (ReferenceEquals(obj, null))
+            if (obj == null)
                 return false;
 
             if (ReferenceEquals(this, obj))
@@ -177,7 +160,7 @@ namespace BookLibrary
         /// <returns>Returns 0 if these books were published at the same time. Returns -1 if current book was published earlier then another one.</returns>
         public int CompareTo(Book other)
         {
-            if (ReferenceEquals(other, null))
+            if (other == null)
                 return 1;
 
             if (publishDate.Equals(other.publishDate))
@@ -194,35 +177,6 @@ namespace BookLibrary
         /// </summary>
         /// <param name="obj">Instance of System.Object</param>
         public int CompareTo(object obj) => this.CompareTo(obj as Book);
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <returns></returns>
-        public IEnumerator<Book> GetEnumerator()
-        {
-            throw new NotImplementedException();
-        }
-
-        IEnumerator IEnumerable.GetEnumerator()
-        {
-            return GetEnumerator();
-        }
-
-        public void Dispose()
-        {
-            throw new NotImplementedException();
-        }
-
-        public bool MoveNext()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Reset()
-        {
-            throw new NotImplementedException();
-        }
 
         /// <summary>
         /// This method returns formated string with information about book such as name the author, title of the book, book's publish date, price of the book.

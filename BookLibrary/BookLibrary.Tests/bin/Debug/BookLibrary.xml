@@ -103,12 +103,6 @@
             </summary>
             <param name="obj">Instance of System.Object</param>
         </member>
-        <member name="M:BookLibrary.Book.GetEnumerator">
-            <summary>
-            
-            </summary>
-            <returns></returns>
-        </member>
         <member name="M:BookLibrary.Book.ToString">
             <summary>
             This method returns formated string with information about book such as name the author, title of the book, book's publish date, price of the book.
