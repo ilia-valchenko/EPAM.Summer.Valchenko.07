@@ -38,19 +38,35 @@ namespace BookLibrary
 
             path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, fileName + ".xml");
 
-            if (File.Exists(path))
-            {
-                log.Error($"The file with given name already exists. Path to this existing file: {path}.");
-                throw new ArgumentException("File with the same name already exist.");
-            }
+            //if (File.Exists(path))
+            //{
+            //    log.Error($"The file with given name already exists. Path to this existing file: {path}.");
+            //    throw new ArgumentException("File with the same name already exist.");
+            //}
 
             log.Info($"Created path for storage file: {path}.");
         }
         #endregion
 
+        /// <summary>
+        /// This method takes a collection of books from a XML file.
+        /// </summary>
+        /// <returns>Returns collection of books.</returns>
         public List<Book> LoadBooks()
         {
-            throw new NotImplementedException();
+            if (!File.Exists(path))
+            {
+                log.Error($"File which represents the storage doesn't exist. Path: {path}");
+                throw new FileNotFoundException($"Path of non-existing file: {path}");
+            }
+
+            var result  = new List<Book>();
+            var xDoc = XDocument.Load(path);
+
+            foreach (var node in xDoc.Descendants("Book"))
+                result.Add(new Book((string)node.Element("Author"), (string)node.Element("Title"), (string)node.Element("Publishdate"), (double)node.Element("Price")));
+
+            return result;
         }
 
         /// <summary>

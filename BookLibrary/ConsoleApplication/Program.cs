@@ -49,19 +49,24 @@ namespace ConsoleApplication
             // Write to binary file
             /* ------------------------------------------------------------------- */
 
-            var serializeStorage = new SerializeBookListStorage("serializestorage");
+            //var serializeStorage = new SerializeBookListStorage("serializestorage");
             //serializeStorage.SaveBooks(originalArray);
 
-            foreach (Book book in serializeStorage.LoadBooks())
-                Console.WriteLine(Environment.NewLine + book);
+            //foreach (Book book in serializeStorage.LoadBooks())
+            //    Console.WriteLine(Environment.NewLine + book);
 
             /* -------------------------------------------------------------------- */
             // Write to XML file
             /* -------------------------------------------------------------------- */
 
-            //var xmlStorage = new XmlBookListStorage("cro_cop");
-            //xmlStorage.SaveBooks(originalArray);
+            var xmlStorage = new XmlBookListStorage("cro_cop");
+            xmlStorage.SaveBooks(originalArray);
 
+            Console.WriteLine("Read from XML file:");
+            foreach (var VARIABLE in xmlStorage.LoadBooks())
+            {
+                Console.WriteLine(VARIABLE);
+            }
 
             Console.WriteLine(Environment.NewLine + "Tap to continue...");
             Console.ReadKey(true);

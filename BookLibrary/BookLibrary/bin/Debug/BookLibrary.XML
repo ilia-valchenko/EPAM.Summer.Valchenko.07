@@ -241,6 +241,12 @@
             </summary>
             <param name="fileName">Name of file which will be represent a storage.</param>
         </member>
+        <member name="M:BookLibrary.XmlBookListStorage.LoadBooks">
+            <summary>
+            This method takes a collection of books from a XML file.
+            </summary>
+            <returns>Returns collection of books.</returns>
+        </member>
         <member name="M:BookLibrary.XmlBookListStorage.SaveBooks(System.Collections.Generic.IEnumerable{BookLibrary.Book})">
             <summary>
             This method saves the given collection of books into the file.
