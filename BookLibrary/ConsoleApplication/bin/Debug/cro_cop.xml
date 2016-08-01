@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--Created by Ilia Valchenko. Date: 01.08.2016-->
+<Books>
+  <Book>
+    <Author>Arkady and Boris Strugatsky</Author>
+    <Title>Hard to Be a God</Title>
+    <Publishdate>Author: Arkady and Boris Strugatsky, Title: Hard to Be a God, Publish date: 10.03.1989 0:00:00, Price: 1,32.</Publishdate>
+    <Price>1.32</Price>
+  </Book>
+  <Book>
+    <Author>James Fenimore Cooper</Author>
+    <Title>The Last of the Mohicans</Title>
+    <Publishdate>Author: James Fenimore Cooper, Title: The Last of the Mohicans, Publish date: 02.06.1826 0:00:00, Price: 0,52.</Publishdate>
+    <Price>0.52</Price>
+  </Book>
+  <Book>
+    <Author>Valentin Pikul</Author>
+    <Title>Ocean patrol</Title>
+    <Publishdate>Author: Valentin Pikul, Title: Ocean patrol, Publish date: 07.08.1954 0:00:00, Price: 3,01.</Publishdate>
+    <Price>3.01</Price>
+  </Book>
+  <Book>
+    <Author>Jon Skeet</Author>
+    <Title>C# in Depth</Title>
+    <Publishdate>Author: Jon Skeet, Title: C# in Depth, Publish date: 20.03.2010 0:00:00, Price: 12,8.</Publishdate>
+    <Price>12.8</Price>
+  </Book>
+  <Book>
+    <Author>Unknown</Author>
+    <Title>Untitled</Title>
+    <Publishdate>Author: Unknown, Title: Untitled, Publish date: 01.08.2016 21:49:00, Price: 0.</Publishdate>
+    <Price>0</Price>
+  </Book>
+</Books>

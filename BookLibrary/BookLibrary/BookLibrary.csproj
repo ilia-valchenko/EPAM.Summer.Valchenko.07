@@ -49,7 +49,8 @@
     <Compile Include="Book.cs" />
     <Compile Include="BookListService.cs" />
     <Compile Include="IBookListStorage.cs" />
-    <Compile Include="SerializationBookService.cs" />
+    <Compile Include="SerializeBookListStorage.cs" />
+    <Compile Include="XmlBookListStorage.cs" />
     <Compile Include="SingleLogger.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -1,2 +1,14 @@
 2016-07-19 21:00:39.3485|INFO|BookLibrary.BookListService|All right! Constructor works!
 2016-07-19 21:00:47.5300|INFO|BookLibrary.BookListService|All right! Constructor works!
+2016-08-01 21:48:11.8449|INFO|BookLibrary.SingleLogger|Created path for storage file: G:\GitEpam\Day7\BookLibrary\ConsoleApplication\bin\Debug\cro_cop.
+2016-08-01 21:49:49.4042|INFO|BookLibrary.SingleLogger|Created path for storage file: G:\GitEpam\Day7\BookLibrary\ConsoleApplication\bin\Debug\cro_cop.
+2016-08-01 21:53:47.4029|INFO|BookLibrary.SingleLogger|Created path for storage file: G:\GitEpam\Day7\BookLibrary\ConsoleApplication\bin\Debug\cro_cop.
+2016-08-01 22:17:05.5799|INFO|BookLibrary.SingleLogger|Created path for storage file: G:\GitEpam\Day7\BookLibrary\ConsoleApplication\bin\Debug\serializestorage.xml.
+2016-08-01 22:17:05.6049|ERROR|BookLibrary.SingleLogger|Attempt to read from a non-existing file. Path: G:\GitEpam\Day7\BookLibrary\ConsoleApplication\bin\Debug\serializestorage.xml.
+2016-08-01 22:17:47.9133|INFO|BookLibrary.SingleLogger|Created path for storage file: G:\GitEpam\Day7\BookLibrary\ConsoleApplication\bin\Debug\serializestorage.dat.
+2016-08-01 22:17:47.9343|ERROR|BookLibrary.SingleLogger|Attempt to read from a non-existing file. Path: G:\GitEpam\Day7\BookLibrary\ConsoleApplication\bin\Debug\serializestorage.dat.
+2016-08-01 22:18:52.7817|INFO|BookLibrary.SingleLogger|Created path for storage file: G:\GitEpam\Day7\BookLibrary\ConsoleApplication\bin\Debug\serializestorage.dat.
+2016-08-01 22:19:29.5660|INFO|BookLibrary.SingleLogger|Created path for storage file: G:\GitEpam\Day7\BookLibrary\ConsoleApplication\bin\Debug\serializestorage.dat.
+2016-08-01 22:20:03.4617|INFO|BookLibrary.SingleLogger|Created path for storage file: G:\GitEpam\Day7\BookLibrary\ConsoleApplication\bin\Debug\serializestorage.dat.
+2016-08-01 22:20:20.1101|ERROR|BookLibrary.SingleLogger|The file with given name already exists. Path to this existing file: G:\GitEpam\Day7\BookLibrary\ConsoleApplication\bin\Debug\serializestorage.dat.
+2016-08-01 22:20:44.7296|ERROR|BookLibrary.SingleLogger|The file with given name already exists. Path to this existing file: G:\GitEpam\Day7\BookLibrary\ConsoleApplication\bin\Debug\serializestorage.dat.

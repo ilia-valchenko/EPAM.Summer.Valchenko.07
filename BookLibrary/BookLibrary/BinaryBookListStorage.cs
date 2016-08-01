@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
@@ -11,24 +12,38 @@ using static BookLibrary.SingleLogger;
 namespace BookLibrary
 {
     /// <summary>
-    /// This class manages the storage of books.
+    /// This class represents the storage of books based on binary file.
     /// </summary>
-    public class BinaryBookListStorage : IBookListStorage
+    public sealed class BinaryBookListStorage : IBookListStorage
     {
         #region Constructors
-        /// <summary>
-        /// Default constructor which creates the default storage 'defaultstorage.bin'.
-        /// </summary>
-        public BinaryBookListStorage() : this("defaultstorage.bin") { }
-
         /// <summary>
         /// Constructor with parameters which initializes path to the storage.
         /// </summary>
         /// <param name="fileName">Name of file which will be represent a storage.</param>
         public BinaryBookListStorage(string fileName)
         {
+            if (fileName == null || fileName.Equals(string.Empty))
+            {
+                log.Error("Attempt to create a storage file with empty or null name.");
+                throw new ArgumentException("Filename can't be empty.");
+            }
+
+            if (!new Regex(@"^[\w\-. ]+$").IsMatch(fileName))
+            {
+                log.Error($"Attempt to create a file by wrong filename. Filename: {fileName}.");
+                throw new ArgumentException("Name of file is not valid.");
+            }
+
             path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, fileName);
-            log.Info($"Created path for log file: {path}.");
+
+            if (File.Exists(path))
+            {
+                log.Error($"The file with given name already exists. Path to this existing file: {path}.");
+                throw new ArgumentException("File with the same name already exist.");
+            }
+
+            log.Info($"Created path for storage file: {path}.");
         }
         #endregion
 
@@ -36,7 +51,7 @@ namespace BookLibrary
         /// <summary>
         /// This method loads books from the storage.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Returns list of books which contains into the storage.</returns>
         public List<Book> LoadBooks()
         {
             var books = new List<Book>();
@@ -60,14 +75,14 @@ namespace BookLibrary
         }
 
         /// <summary>
-        /// This method saves books into the storage.
+        /// This method saves a collection of books into the storage.
         /// </summary>
         /// <param name="books">List of books which will be stored.</param>
         public void SaveBooks(IEnumerable<Book> books)
         {
-            if (ReferenceEquals(books, null))
+            if (books == null)
             {
-                log.Error("Attemt to save book which is null.");
+                log.Error("Attemt to save a collection of books which is null.");
                 throw new ArgumentNullException(nameof(books));
             }
                 
@@ -80,7 +95,7 @@ namespace BookLibrary
                 {
                     bWriter.Write(book.Author);
                     bWriter.Write(book.Title);
-                    bWriter.Write(book.PublishDate.ToString());
+                    bWriter.Write(book.PublishDate.ToShortDateString());
                     bWriter.Write(book.Price);
                 }
             }
@@ -89,7 +104,7 @@ namespace BookLibrary
 
         #region Private fields
         /// <summary>
-        /// Full path to the file which represents storage.
+        /// Full path to the file which represents a storage.
         /// </summary>
         private readonly string path; 
         #endregion

@@ -6,12 +6,7 @@
     <members>
         <member name="T:BookLibrary.BinaryBookListStorage">
             <summary>
-            This class manages the storage of books.
-            </summary>
-        </member>
-        <member name="M:BookLibrary.BinaryBookListStorage.#ctor">
-            <summary>
-            Default constructor which creates the default storage 'defaultstorage.bin'.
+            This class represents the storage of books based on binary file.
             </summary>
         </member>
         <member name="M:BookLibrary.BinaryBookListStorage.#ctor(System.String)">
@@ -24,17 +19,17 @@
             <summary>
             This method loads books from the storage.
             </summary>
-            <returns></returns>
+            <returns>Returns list of books which contains into the storage.</returns>
         </member>
         <member name="M:BookLibrary.BinaryBookListStorage.SaveBooks(System.Collections.Generic.IEnumerable{BookLibrary.Book})">
             <summary>
-            This method saves books into the storage.
+            This method saves a collection of books into the storage.
             </summary>
             <param name="books">List of books which will be stored.</param>
         </member>
         <member name="F:BookLibrary.BinaryBookListStorage.path">
             <summary>
-            Full path to the file which represents storage.
+            Full path to the file which represents a storage.
             </summary>
         </member>
         <member name="T:BookLibrary.Book">
@@ -206,6 +201,56 @@
             This method packs books into a storage.
             </summary>
             <param name="books">Books which must be stored.</param>
+        </member>
+        <member name="T:BookLibrary.SerializeBookListStorage">
+            <summary>
+            This class provides basic read/write operations for collection of books by using serialize technology.
+            </summary>
+        </member>
+        <member name="M:BookLibrary.SerializeBookListStorage.#ctor(System.String)">
+            <summary>
+            Constructor with parameters which initializes path to the storage.
+            </summary>
+            <param name="fileName">Name of file which will be represent a storage.</param>
+        </member>
+        <member name="M:BookLibrary.SerializeBookListStorage.LoadBooks">
+            <summary>
+            This method reads books from a file.
+            </summary>
+            <returns>Returns collection of books.</returns>
+        </member>
+        <member name="M:BookLibrary.SerializeBookListStorage.SaveBooks(System.Collections.Generic.IEnumerable{BookLibrary.Book})">
+            <summary>
+            This method saves the given collection of books into the file.
+            </summary>
+            <param name="books">Collection of books which will be saved into the file.</param>
+        </member>
+        <member name="F:BookLibrary.SerializeBookListStorage.path">
+            <summary>
+            Full path to the file which represents a storage.
+            </summary>
+        </member>
+        <member name="T:BookLibrary.XmlBookListStorage">
+            <summary>
+            This class provides basic read/write to XML file operations.
+            </summary>
+        </member>
+        <member name="M:BookLibrary.XmlBookListStorage.#ctor(System.String)">
+            <summary>
+            Constructor with parameters which initializes path to the storage.
+            </summary>
+            <param name="fileName">Name of file which will be represent a storage.</param>
+        </member>
+        <member name="M:BookLibrary.XmlBookListStorage.SaveBooks(System.Collections.Generic.IEnumerable{BookLibrary.Book})">
+            <summary>
+            This method saves the given collection of books into the file.
+            </summary>
+            <param name="books">Collection of books which will be saved into the file.</param>
+        </member>
+        <member name="F:BookLibrary.XmlBookListStorage.path">
+            <summary>
+            Full path to the file which represents a storage.
+            </summary>
         </member>
         <member name="T:BookLibrary.SingleLogger">
             <summary>
